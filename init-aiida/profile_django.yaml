@@ -1,0 +1,15 @@
+profile: django
+email: ringo@starr.com
+first_name: Ringo
+last_name: Starr
+institution: The Beatles
+db_engine: postgresql_psycopg2
+db_backend: django
+db_host: database
+db_port: 5432
+su_db_username: pguser
+su_db_password: password
+su_db_name: template1
+db_name: aiida_db
+db_username: aiida
+db_password: password

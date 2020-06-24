@@ -1,0 +1,55 @@
+version: '3.4'
+
+services:
+
+  core:
+    build:
+      context: build/
+      args: 
+        PYTHON_VERSION: "${PYTHON_VERSION}"
+        GIT_BRANCH: "${GIT_BRANCH}"
+    image: "chrisjsewell/aiida-profile:${IMAGE_TAG}"
+    container_name: aiida-core
+    depends_on:
+      - database
+      - messaging
+    volumes:
+      - "./init-aiida:/etc/my_init.d"
+      - "./tests:/home/aiida/tests"
+      - "./outputs/${IMAGE_TAG}-${AIIDA_BACKEND}:/home/aiida/outputs"
+      - "aiida-object-store:/home/aiida/.aiida"
+    environment:
+      AIIDA_BACKEND: "${AIIDA_BACKEND}"
+    cap_add: 
+      # this is required by py-spy: https://github.com/benfred/py-spy#how-do-i-run-py-spy-in-docker
+      - SYS_PTRACE
+
+  database:
+    image: postgres:12.3
+    container_name: aiida-database
+    environment:
+      POSTGRES_USER: pguser
+      POSTGRES_PASSWORD: password
+    # ports:
+    #   - 5432:5432 # expose main port locally
+    volumes:
+      - "./init-postgres:/docker-entrypoint-initdb.d"
+      - "aiida-postgres-db:/var/lib/postgresql/data"
+    restart: always
+    # allow for query statistics logging
+    command: postgres -c shared_preload_libraries=pg_stat_statements -c pg_stat_statements.track=all
+
+  messaging:
+    image: rabbitmq:3.8.3-management
+    container_name: aiida-rmq
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    volumes:
+      - "aiida-rmq-data:/var/lib/rabbitmq/"
+    restart: always
+
+volumes:
+  aiida-object-store:
+  aiida-postgres-db:
+  aiida-rmq-data:
