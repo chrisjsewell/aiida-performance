@@ -456,7 +456,7 @@ if __name__ == "__main__":
         if _command == "queries":
             Path(args.path).joinpath(args.name + "_queries.html").write_text(query_stats_df().to_html())
         if _command == "indices":
-            Path(args.path).joinpath(args.name + "_indices.html").write_text(indices_list_df().to_html())
+            Path(args.path).joinpath(args.name + "_indices.html").write_text(indices_stats_df().to_html())
         elif _command == "reset":
             query_reset_stats()
 
