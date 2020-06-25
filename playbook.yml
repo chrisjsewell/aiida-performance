@@ -8,8 +8,9 @@
     GIT_BRANCH: "release/1.3.0"
     IMAGE_TAG: "py3.7-v1.3.0"
     AIIDA_BACKEND: "django"
-    OUTPUT_FOLDER: "{{ IMAGE_TAG }}-{{ AIIDA_BACKEND }}"
+    OUTPUT_FOLDER: "outputs/{{ IMAGE_TAG }}-{{ AIIDA_BACKEND }}"
     INITIAL_WAIT: 30
+    DOCKER_DOWN: true
 
   tasks:
 
@@ -24,15 +25,12 @@
         path: "outputs/"
         state: directory
 
-    - name: dump machine facts
-      copy:
-        content: "{{ hostvars[inventory_hostname] | to_nice_yaml }}"
-        dest: outputs/host-facts.yaml
-
     - name: "Add outputs folder: {{ OUTPUT_FOLDER }}"
       file:
-        path: "outputs/{{ OUTPUT_FOLDER }}"
+        path: "{{ OUTPUT_FOLDER }}"
         state: directory
+
+    # TODO docker login + pull
 
     - name: Create and start docker services
       docker_compose:
@@ -44,38 +42,51 @@
         IMAGE_TAG: "{{ IMAGE_TAG }}"
         AIIDA_BACKEND: "{{ AIIDA_BACKEND }}"
 
-    - name: Wait for initialisation
-      command: |
-        docker exec aiida-core timeout {{ INITIAL_WAIT }}s bash -c \
-          'until [ -f /opt/.initialised ] 2> /dev/null; do echo -n .; sleep 1; done'
-      changed_when: False
+    # TODO docker push
 
-    - name: touch run_times.yaml
-      file:
-        path: outputs/{{ OUTPUT_FOLDER }}/run_times.yml
-        state: touch
+    - name: dump machine facts
+      copy:
+        content: "{{ hostvars[inventory_hostname] | to_nice_yaml }}"
+        dest: "{{ OUTPUT_FOLDER }}/host-facts.yaml"
 
-    - include_role:
-        name: profile-blocking
-      loop:
-        - create_nodes
-        - delete_nodes
-      loop_control:
-        loop_var: TEST_NAME
+    - block:
+      - name: Wait for initialisation
+        command: |
+          docker exec aiida-core timeout {{ INITIAL_WAIT }}s bash -c \
+            'until [ -f /opt/.initialised ] 2> /dev/null; do echo -n .; sleep 1; done'
+        changed_when: False
 
-    - name: "Dump database final indices stats"
-      command:
-        cmd: >
-          docker exec --user aiida aiida-core verdi run tests/db_stats.py --path "/home/aiida/outputs" --name "final" indices
-        creates: outputs/{{ OUTPUT_FOLDER }}/final_indices.html
+      - name: touch run_times.yaml
+        file:
+          path: "{{ OUTPUT_FOLDER }}/run_times.yml"
+          state: touch
 
-    - name: Tear down existing docker services
-      docker_compose:
-        project_src: .
-        state: absent
-        remove_volumes: yes
-      environment:
-        PYTHON_VERSION: "{{ PYTHON_VERSION }}"
-        GIT_BRANCH: "{{ GIT_BRANCH }}"
-        IMAGE_TAG: "{{ IMAGE_TAG }}"
-        AIIDA_BACKEND: "{{ AIIDA_BACKEND }}"
+      - include_role:
+          name: profile-blocking
+        loop:
+          - create_nodes
+          - delete_nodes
+          - workfunction
+          - calcjob-add-local
+          - workchain-multiadd-local
+        loop_control:
+          loop_var: TEST_NAME
+
+      - name: "Dump database final indices stats"
+        command:
+          cmd: >
+            docker exec --user aiida aiida-core verdi run tests/db_stats.py --path "/home/aiida/outputs" --name "final" indices
+          creates: "{{ OUTPUT_FOLDER }}/final_indices.html"
+
+      always:
+        - name: Tear down existing docker services
+          when: DOCKER_DOWN
+          docker_compose:
+            project_src: .
+            state: absent
+            remove_volumes: yes
+          environment:
+            PYTHON_VERSION: "{{ PYTHON_VERSION }}"
+            GIT_BRANCH: "{{ GIT_BRANCH }}"
+            IMAGE_TAG: "{{ IMAGE_TAG }}"
+            AIIDA_BACKEND: "{{ AIIDA_BACKEND }}"

@@ -1,2 +1,3 @@
 TEST_NAME: create_nodes
 OUTPUT_FOLDER: run1
+CMD_PREFIX: "docker exec --user aiida aiida-core "

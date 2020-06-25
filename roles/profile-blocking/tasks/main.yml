@@ -1,20 +1,28 @@
+- name: Check that the somefile.conf exists
+  stat:
+    path: "{{ OUTPUT_FOLDER }}/{{ TEST_NAME }}.prof"
+  register: stat_result
+
 - name: "Run pre-test script: {{ TEST_NAME }}"
+  when: not stat_result.stat.exists
   command: >
-    docker exec --user aiida aiida-core verdi run tests/{{ TEST_NAME }}.py --pre
+    {{ CMD_PREFIX }}verdi run tests/{{ TEST_NAME }}.py --pre
+  # TODO only run if test script is to be run
+  changed_when: False
 
 - name: "Reset database stats"
   command:
     cmd: >
-      docker exec --user aiida aiida-core verdi run tests/db_stats.py reset
+      {{ CMD_PREFIX }}verdi run tests/db_stats.py reset
   changed_when: False
 
 - name: "Run test script: {{ TEST_NAME }}"
   command:
     cmd: >
-      docker exec --user aiida aiida-core /usr/bin/time -f "{{ TEST_NAME }}: %e" -o /home/aiida/outputs/run_times.yml -a --quiet
+      {{ CMD_PREFIX }}/usr/bin/time -f "{{ TEST_NAME }}: %e" -o /home/aiida/outputs/run_times.yml -a --quiet
       py-spy record --subprocesses -f raw -o /home/aiida/outputs/{{ TEST_NAME }}.prof --
       verdi run tests/{{ TEST_NAME }}.py
-    creates: outputs/{{ OUTPUT_FOLDER }}/{{ TEST_NAME }}.prof
+    creates: "{{ OUTPUT_FOLDER }}/{{ TEST_NAME }}.prof"
     # TODO on exit raises Error: No child process (os error 10)
   ignore_errors: yes
   register: test_output
@@ -23,15 +31,15 @@
   shell:
     cmd: > 
       docker run --rm --name flamegraph
-      -v "$PWD/plotting":/usr/src/myapp/plotting -v "$PWD/outputs/{{ OUTPUT_FOLDER }}":/usr/src/myapp/outputs
+      -v "$PWD/plotting":/usr/src/myapp/plotting -v "$PWD/{{ OUTPUT_FOLDER }}":/usr/src/myapp/outputs
       -w /usr/src/myapp perl:5.20
       perl plotting/flamegraph.pl --inverted --title {{ TEST_NAME }} outputs/{{ TEST_NAME }}.prof
-      > outputs/{{ OUTPUT_FOLDER }}/{{ TEST_NAME }}.svg
-    creates: outputs/{{ OUTPUT_FOLDER }}/{{ TEST_NAME }}.svg
+      > {{ OUTPUT_FOLDER }}/{{ TEST_NAME }}.svg
+    creates: "{{ OUTPUT_FOLDER }}/{{ TEST_NAME }}.svg"
 
 - name: "Dump database query stats: {{ TEST_NAME }}"
   when: test_output.changed
   command:
     cmd: >
-      docker exec --user aiida aiida-core verdi run tests/db_stats.py --path "/home/aiida/outputs" --name "{{ TEST_NAME }}" queries reset
-    creates: outputs/{{ OUTPUT_FOLDER }}/{{ TEST_NAME }}_queries.html
+      {{ CMD_PREFIX }}verdi run tests/db_stats.py --path "/home/aiida/outputs" --name "{{ TEST_NAME }}" queries reset
+    creates: "{{ OUTPUT_FOLDER }}/{{ TEST_NAME }}_queries.html"

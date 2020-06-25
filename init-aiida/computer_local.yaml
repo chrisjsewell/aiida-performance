@@ -1,0 +1,7 @@
+label: localhost
+hostname: localhost
+transport: local
+scheduler: direct
+mpiprocs_per_machine: 1
+prepend_text: ""
+append_text: ""
