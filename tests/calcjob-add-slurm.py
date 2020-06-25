@@ -5,10 +5,10 @@ else:
     from aiida import orm
     from aiida.engine import run
 
-    code = orm.load_code(label='add-local')
+    code = orm.load_code(label='add-slurm')
     builder = code.get_builder()
     builder.x = orm.Int(1)
     builder.y = orm.Int(2)
 
-    for i in range(30):
+    for i in range(4):
         run(builder)

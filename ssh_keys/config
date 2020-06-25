@@ -1,0 +1,4 @@
+Host slurm-node
+     Hostname slurm-node
+     user xenon
+     IdentityFile ~/.ssh/id_rsa

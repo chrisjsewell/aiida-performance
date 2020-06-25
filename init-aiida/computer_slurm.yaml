@@ -1,0 +1,13 @@
+# setup
+label: slurm
+hostname: slurm-node
+description: A slurm node connected by SSH
+transport: ssh
+scheduler: slurm
+work_dir: /home/xenon/scratch/
+mpiprocs-per-machine: 1
+
+# configure
+username: xenon
+key_filename: /home/aiida/.ssh/id_rsa
+safe_interval: 30.0

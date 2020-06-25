@@ -8,7 +8,7 @@ else:
     MultiplyAddWorkChain = plugins.WorkflowFactory('arithmetic.multiply_add')
 
     builder = MultiplyAddWorkChain.get_builder()
-    builder.code = orm.load_code(label='add')
+    builder.code = orm.load_code(label='add-local')
     builder.x = orm.Int(2)
     builder.y = orm.Int(3)
     builder.z = orm.Int(5)

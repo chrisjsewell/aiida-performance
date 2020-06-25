@@ -4,7 +4,7 @@ services:
 
   core:
     build:
-      context: build/
+      context: build-aiida/
       args: 
         PYTHON_VERSION: "${PYTHON_VERSION}"
         GIT_BRANCH: "${GIT_BRANCH}"
@@ -13,10 +13,12 @@ services:
     depends_on:
       - database
       - messaging
+      - slurm-node
     volumes:
       - "./init-aiida:/etc/my_init.d"
       - "./tests:/home/aiida/tests"
       - "./outputs/${IMAGE_TAG}-${AIIDA_BACKEND}:/home/aiida/outputs"
+      - "./ssh_keys:/home/aiida/.ssh"
       - "aiida-object-store:/home/aiida/.aiida"
     environment:
       AIIDA_BACKEND: "${AIIDA_BACKEND}"
@@ -48,6 +50,11 @@ services:
     volumes:
       - "aiida-rmq-data:/var/lib/rabbitmq/"
     restart: always
+
+  slurm-node:
+    # TODO find/create better slurm node (with better configuration)
+    image: "xenonmiddleware/slurm:17"
+    container_name: slurm-node
 
 volumes:
   aiida-object-store:

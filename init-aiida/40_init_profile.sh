@@ -22,7 +22,17 @@ verdi computer configure local localhost --non-interactive --safe-interval=0
 # verdi computer test localhost
 
 echo "Adding local code"
-verdi code setup -L add --on-computer --computer=localhost -P arithmetic.add --remote-abs-path=/bin/bash --non-interactive || true
+verdi code setup -L add-local --on-computer --computer=localhost -P arithmetic.add --remote-abs-path=/bin/bash --non-interactive || true
+
+echo "Adding ssh computer"
+# TODO move to ansible role?
+# TODO only allow error if its for existing computer, but should fail otherwise
+verdi computer setup --config "${SCRIPT_DIR}/computer_slurm.yaml" --non-interactive || true
+verdi computer configure ssh slurm --config "${SCRIPT_DIR}/computer_slurm.yaml" --non-interactive
+# verdi computer test slurm
+
+echo "Adding ssh code"
+verdi code setup -L add-slurm --on-computer --computer=slurm -P arithmetic.add --remote-abs-path=/bin/bash --non-interactive || true
 
 # change rabbitmq to host on docker network
 # TODO replace when https://github.com/aiidateam/aiida-core/pull/4118 merged

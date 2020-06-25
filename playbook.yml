@@ -69,6 +69,7 @@
           - workfunction
           - calcjob-add-local
           - workchain-multiadd-local
+          - calcjob-add-slurm
         loop_control:
           loop_var: TEST_NAME
 
