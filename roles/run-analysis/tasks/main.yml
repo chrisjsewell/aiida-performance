@@ -102,6 +102,14 @@
           GIT_BRANCH: "{{ GIT_BRANCH }}"
           IMAGE_TAG: "{{ IMAGE_TAG }}"
           AIIDA_BACKEND: "{{ AIIDA_BACKEND }}"
+          OUTPUT_FOLDER: "{{ OUTPUT_FOLDER }}"
 
     # TODO to make a write a number of the files in github actions
-    # we have to use become, should we change permissions at the end
+    # we have to use # become, should we change permissions at the end
+
+      - name: fix permissions
+        become: true
+        file:
+          path: "{{ OUTPUT_FOLDER }}"
+          recurse: true
+          mode: u=rw,g=rw,o=rw
