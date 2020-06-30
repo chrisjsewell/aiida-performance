@@ -78,7 +78,7 @@
           run_times: "{{ run_times['content'] | b64decode }}"
 
       - name: make documentation main page
-        template: 
+        template:
           src: templates/front_page.j2.md
           dest: "{{ OUTPUT_FOLDER }}/index.md"
         vars:

@@ -45,9 +45,8 @@
     creates: "{{ OUTPUT_FOLDER }}/{{ TEST_NAME }}_queries.html"
 
 - name: "Make documentation page"
-  template: 
+  template:
     src: test-analysis.j2.md
     dest: "{{ OUTPUT_FOLDER }}/{{ TEST_NAME }}.analysis.md"
   vars:
     test_name: "{{ TEST_NAME }}"
-

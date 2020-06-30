@@ -3,7 +3,8 @@
 
 exclude: >
     (?x)^(
-      \.vscode/settings\.json
+      \.vscode/settings\.json|
+      docs/.*html
     )$
 
 repos:
