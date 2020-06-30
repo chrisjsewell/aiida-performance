@@ -23,6 +23,8 @@ jobs:
         pip install -r requirements.txt
     - name: Run ansible analysis
       run: ansible-playbook playbook.yml -e PYTHON_VERSION=3.7 -e GIT_BRANCH=release/1.3.0 -e AIIDA_BACKEND=django
+    - name: fix permissions
+      run: sudo chmod -R 666 docs/analyses
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v2
       with:

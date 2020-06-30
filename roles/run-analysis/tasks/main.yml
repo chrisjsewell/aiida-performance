@@ -58,11 +58,11 @@
       loop:
         # TODO make variable
         - create_nodes
-        - delete_nodes
-        - workfunction
-        - calcjob-add-local
-        - workchain-multiadd-local
-        - calcjob-add-slurm
+        # - delete_nodes
+        # - workfunction
+        # - calcjob-add-local
+        # - workchain-multiadd-local
+        # - calcjob-add-slurm
       loop_control:
         loop_var: TEST_NAME
 
