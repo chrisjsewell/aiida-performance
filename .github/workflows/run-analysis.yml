@@ -1,6 +1,9 @@
 name: Run Analysis
 
-on: create
+on:
+  push:
+    branches:
+      - master
 
 jobs:
 

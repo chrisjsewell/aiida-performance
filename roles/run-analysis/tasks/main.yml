@@ -1,0 +1,99 @@
+- name: Print output dir
+  debug:
+    msg: "{{ OUTPUT_FOLDER }}"
+
+- name: Test if the folder has already been analysed
+  stat:
+    path: "{{ OUTPUT_FOLDER }}/index.md"
+  register: stat_result
+
+  # TODO have tag for running anyway
+- when: not stat_result.stat.exists
+  block:
+
+  - name: get variables from file
+    include_vars:
+      file: "{{ OUTPUT_FOLDER }}/run_data.yaml"
+
+  - name: set docker tag
+    set_fact:
+      IMAGE_TAG: "{{ GIT_BRANCH | replace('/', '_') }}-py{{ PYTHON_VERSION }}"
+
+  # TODO docker login + pull
+
+  - name: Create and start docker services
+    docker_compose:
+      project_src: .
+      build: yes
+    environment:
+      PYTHON_VERSION: "{{ PYTHON_VERSION }}"
+      GIT_BRANCH: "{{ GIT_BRANCH }}"
+      IMAGE_TAG: "{{ IMAGE_TAG }}"
+      AIIDA_BACKEND: "{{ AIIDA_BACKEND }}"
+
+  # TODO docker push
+
+  - name: dump machine facts
+    copy:
+      content: "{{ hostvars[inventory_hostname] | to_nice_yaml }}"
+      dest: "{{ OUTPUT_FOLDER }}/host-facts.yaml"
+
+  - block:
+    - name: Wait for initialisation
+      command: |
+        docker exec aiida-core timeout {{ INITIAL_WAIT }}s bash -c \
+          'until [ -f /opt/.initialised ] 2> /dev/null; do echo -n .; sleep 1; done'
+      changed_when: False
+
+    - name: touch run_times.yaml
+      file:
+        path: "{{ OUTPUT_FOLDER }}/run_times.yml"
+        state: touch
+
+    - include_role:
+        name: profile-blocking
+      loop:
+        # TODO make variable
+        - create_nodes
+        - delete_nodes
+        - workfunction
+        - calcjob-add-local
+        - workchain-multiadd-local
+        - calcjob-add-slurm
+      loop_control:
+        loop_var: TEST_NAME
+
+    - name: "Dump database final indices stats"
+      command:
+        cmd: >
+          docker exec --user aiida aiida-core verdi run tests/db_stats.py --path "/home/aiida/outputs" --name "final" indices
+        creates: "{{ OUTPUT_FOLDER }}/final_indices.html"
+
+    - name: Read run_times.yaml
+      slurp:
+        src: "{{ OUTPUT_FOLDER }}/run_times.yml"
+      register: run_times
+
+    - name: Set run times fact
+      set_fact:
+        run_times: "{{ run_times['content'] | b64decode }}"
+
+    - name: make documentation main page
+      template:
+        src: templates/front_page.j2.md
+        dest: "{{ OUTPUT_FOLDER }}/index.md"
+      vars:
+        analysis_title: "{{ IMAGE_TAG }}-{{ AIIDA_BACKEND }}"
+
+    always:
+      - name: Tear down existing docker services
+        when: DOCKER_DOWN
+        docker_compose:
+          project_src: .
+          state: absent
+          remove_volumes: yes
+        environment:
+          PYTHON_VERSION: "{{ PYTHON_VERSION }}"
+          GIT_BRANCH: "{{ GIT_BRANCH }}"
+          IMAGE_TAG: "{{ IMAGE_TAG }}"
+          AIIDA_BACKEND: "{{ AIIDA_BACKEND }}"

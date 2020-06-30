@@ -1,4 +1,4 @@
-- name: Check that the somefile.conf exists
+- name: Check whether profile anlysis result already exists
   stat:
     path: "{{ OUTPUT_FOLDER }}/{{ TEST_NAME }}.prof"
   register: stat_result

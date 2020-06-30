@@ -3,96 +3,25 @@
   gather_facts: yes
 
   vars:
-    PYTHON_VERSION: "3.7"
-    GIT_BRANCH: "release/1.3.0"
-    AIIDA_BACKEND: "django"
-
-    IMAGE_TAG: "{{ GIT_BRANCH | replace('/', '_') }}-py{{ PYTHON_VERSION }}"
-    OUTPUT_FOLDER: "docs/analyses/{{ IMAGE_TAG }}-{{ AIIDA_BACKEND }}"
-    INITIAL_WAIT: 30
-    DOCKER_DOWN: true
+    ANALYSIS_FOLDER: "docs/analyses/"
 
   tasks:
 
-    - name: "Add outputs folder: {{ OUTPUT_FOLDER }}"
-      file:
-        path: "{{ OUTPUT_FOLDER }}"
-        state: directory
+    - name: Find all analysis directories
+      find:
+        paths: "{{ ANALYSIS_FOLDER }}"
+        file_type: directory
+      register: result_of_find
 
-    # TODO docker login + pull
+    - name: Assert all directories have a run_data.yaml
+      # so we can fail fast before wasting any time running
+      # TODO probably a better role to do this
+      command: cat {{ item.path }}/run_data.yaml
+      loop: "{{ result_of_find.files | flatten(levels=1) }}"
 
-    - name: Create and start docker services
-      docker_compose:
-        project_src: .
-        build: yes
-      environment:
-        PYTHON_VERSION: "{{ PYTHON_VERSION }}"
-        GIT_BRANCH: "{{ GIT_BRANCH }}"
-        IMAGE_TAG: "{{ IMAGE_TAG }}"
-        AIIDA_BACKEND: "{{ AIIDA_BACKEND }}"
-
-    # TODO docker push
-
-    - name: dump machine facts
-      copy:
-        content: "{{ hostvars[inventory_hostname] | to_nice_yaml }}"
-        dest: "{{ OUTPUT_FOLDER }}/host-facts.yaml"
-
-    - block:
-      - name: Wait for initialisation
-        command: |
-          docker exec aiida-core timeout {{ INITIAL_WAIT }}s bash -c \
-            'until [ -f /opt/.initialised ] 2> /dev/null; do echo -n .; sleep 1; done'
-        changed_when: False
-
-      - name: touch run_times.yaml
-        file:
-          path: "{{ OUTPUT_FOLDER }}/run_times.yml"
-          state: touch
-
-      - include_role:
-          name: profile-blocking
-        loop:
-          - create_nodes
-          - delete_nodes
-          - workfunction
-          - calcjob-add-local
-          - workchain-multiadd-local
-          - calcjob-add-slurm
-        loop_control:
-          loop_var: TEST_NAME
-
-      - name: "Dump database final indices stats"
-        command:
-          cmd: >
-            docker exec --user aiida aiida-core verdi run tests/db_stats.py --path "/home/aiida/outputs" --name "final" indices
-          creates: "{{ OUTPUT_FOLDER }}/final_indices.html"
-
-      - name: Read run_times.yaml
-        slurp:
-          src: "{{ OUTPUT_FOLDER }}/run_times.yml"
-        register: run_times
-
-      - name: Set run times fact
-        set_fact:
-          run_times: "{{ run_times['content'] | b64decode }}"
-
-      - name: make documentation main page
-        template:
-          src: templates/front_page.j2.md
-          dest: "{{ OUTPUT_FOLDER }}/index.md"
-        vars:
-          analysis_title: "{{ IMAGE_TAG }}-{{ AIIDA_BACKEND }}"
-
-      always:
-        - name: Tear down existing docker services
-          when: DOCKER_DOWN
-          docker_compose:
-            project_src: .
-            state: absent
-            remove_volumes: yes
-          environment:
-            PYTHON_VERSION: "{{ PYTHON_VERSION }}"
-            GIT_BRANCH: "{{ GIT_BRANCH }}"
-            IMAGE_TAG: "{{ IMAGE_TAG }}"
-            AIIDA_BACKEND: "{{ AIIDA_BACKEND }}"
+    - name: Run analysis for all directories
+      include_role:
+        name: run-analysis
+      vars:
+        OUTPUT_FOLDER: "{{ item.path }}"
+      loop: "{{ result_of_find.files | flatten(levels=1) }}"

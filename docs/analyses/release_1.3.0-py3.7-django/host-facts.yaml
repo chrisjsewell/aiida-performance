@@ -1,3 +1,6 @@
+AIIDA_BACKEND: django
+GIT_BRANCH: release/1.3.0
+PYTHON_VERSION: '3.7'
 ansible_all_ipv4_addresses:
 - 192.168.0.60
 ansible_all_ipv6_addresses:
@@ -77,16 +80,16 @@ ansible_connection: local
 ansible_date_time:
     date: '2020-06-30'
     day: '30'
-    epoch: '1593520384'
-    hour: '13'
-    iso8601: '2020-06-30T12:33:04Z'
-    iso8601_basic: 20200630T133304999578
-    iso8601_basic_short: 20200630T133304
-    iso8601_micro: '2020-06-30T12:33:04.999714Z'
-    minute: '33'
+    epoch: '1593523543'
+    hour: '14'
+    iso8601: '2020-06-30T13:25:43Z'
+    iso8601_basic: 20200630T142543505480
+    iso8601_basic_short: 20200630T142543
+    iso8601_micro: '2020-06-30T13:25:43.505616Z'
+    minute: '25'
     month: '06'
-    second: '04'
-    time: '13:33:04'
+    second: '43'
+    time: '14:25:43'
     tz: BST
     tz_offset: '+0100'
     weekday: Tuesday
@@ -401,15 +404,15 @@ ansible_facts:
                 maintainer: AiiDA Team
             networks:
                 aiida-performance_default:
-                    IPAddress: 172.29.0.5
+                    IPAddress: 172.31.0.5
                     IPPrefixLen: 16
                     aliases:
+                    - a4e1bfd93c36
                     - core
-                    - 992dc6433157
                     globalIPv6: ''
                     globalIPv6PrefixLen: 0
                     links: null
-                    macAddress: 02:42:ac:1d:00:05
+                    macAddress: 02:42:ac:1f:00:05
             state:
                 running: true
                 status: running
@@ -433,31 +436,31 @@ ansible_facts:
                 com.docker.compose.version: 1.26.0
             networks:
                 aiida-performance_default:
-                    IPAddress: 172.29.0.4
+                    IPAddress: 172.31.0.3
                     IPPrefixLen: 16
                     aliases:
                     - database
-                    - a1eee8379a1f
+                    - 8284c7ef8622
                     globalIPv6: ''
                     globalIPv6PrefixLen: 0
                     links: null
-                    macAddress: 02:42:ac:1d:00:04
+                    macAddress: 02:42:ac:1f:00:03
             state:
                 running: true
                 status: running
     date_time:
         date: '2020-06-30'
         day: '30'
-        epoch: '1593520384'
-        hour: '13'
-        iso8601: '2020-06-30T12:33:04Z'
-        iso8601_basic: 20200630T133304999578
-        iso8601_basic_short: 20200630T133304
-        iso8601_micro: '2020-06-30T12:33:04.999714Z'
-        minute: '33'
+        epoch: '1593523543'
+        hour: '14'
+        iso8601: '2020-06-30T13:25:43Z'
+        iso8601_basic: 20200630T142543505480
+        iso8601_basic_short: 20200630T142543
+        iso8601_micro: '2020-06-30T13:25:43.505616Z'
+        minute: '25'
         month: '06'
-        second: '04'
-        time: '13:33:04'
+        second: '43'
+        time: '14:25:43'
         tz: BST
         tz_offset: '+0100'
         weekday: Tuesday
@@ -766,7 +769,7 @@ ansible_facts:
         type: loopback
     lsb: {}
     machine: x86_64
-    memfree_mb: 1555
+    memfree_mb: 3921
     memtotal_mb: 16384
     messaging:
         aiida-rmq:
@@ -784,15 +787,15 @@ ansible_facts:
                 com.docker.compose.version: 1.26.0
             networks:
                 aiida-performance_default:
-                    IPAddress: 172.29.0.2
+                    IPAddress: 172.31.0.4
                     IPPrefixLen: 16
                     aliases:
                     - messaging
-                    - a911ad458816
+                    - c8c886913888
                     globalIPv6: ''
                     globalIPv6PrefixLen: 0
                     links: null
-                    macAddress: 02:42:ac:1d:00:02
+                    macAddress: 02:42:ac:1f:00:04
             state:
                 running: true
                 status: running
@@ -866,15 +869,15 @@ ansible_facts:
                 com.docker.compose.version: 1.26.0
             networks:
                 aiida-performance_default:
-                    IPAddress: 172.29.0.3
+                    IPAddress: 172.31.0.2
                     IPPrefixLen: 16
                     aliases:
                     - slurm-node
-                    - 37fbdf73bc37
+                    - 82bdfc55f275
                     globalIPv6: ''
                     globalIPv6PrefixLen: 0
                     links: null
-                    macAddress: 02:42:ac:1d:00:03
+                    macAddress: 02:42:ac:1f:00:02
             state:
                 running: true
                 status: running
@@ -1061,7 +1064,7 @@ ansible_lo0:
 ansible_local: {}
 ansible_lsb: {}
 ansible_machine: x86_64
-ansible_memfree_mb: 1555
+ansible_memfree_mb: 3921
 ansible_memtotal_mb: 16384
 ansible_model: MacBookPro16,2
 ansible_nodename: MacBook-Pro.local
@@ -1234,15 +1237,15 @@ core:
             maintainer: AiiDA Team
         networks:
             aiida-performance_default:
-                IPAddress: 172.29.0.5
+                IPAddress: 172.31.0.5
                 IPPrefixLen: 16
                 aliases:
+                - a4e1bfd93c36
                 - core
-                - 992dc6433157
                 globalIPv6: ''
                 globalIPv6PrefixLen: 0
                 links: null
-                macAddress: 02:42:ac:1d:00:05
+                macAddress: 02:42:ac:1f:00:05
         state:
             running: true
             status: running
@@ -1266,15 +1269,15 @@ database:
             com.docker.compose.version: 1.26.0
         networks:
             aiida-performance_default:
-                IPAddress: 172.29.0.4
+                IPAddress: 172.31.0.3
                 IPPrefixLen: 16
                 aliases:
                 - database
-                - a1eee8379a1f
+                - 8284c7ef8622
                 globalIPv6: ''
                 globalIPv6PrefixLen: 0
                 links: null
-                macAddress: 02:42:ac:1d:00:04
+                macAddress: 02:42:ac:1f:00:03
         state:
             running: true
             status: running
@@ -1302,20 +1305,20 @@ messaging:
             com.docker.compose.version: 1.26.0
         networks:
             aiida-performance_default:
-                IPAddress: 172.29.0.2
+                IPAddress: 172.31.0.4
                 IPPrefixLen: 16
                 aliases:
                 - messaging
-                - a911ad458816
+                - c8c886913888
                 globalIPv6: ''
                 globalIPv6PrefixLen: 0
                 links: null
-                macAddress: 02:42:ac:1d:00:02
+                macAddress: 02:42:ac:1f:00:04
         state:
             running: true
             status: running
 module_setup: true
-omit: __omit_place_holder__8d92bbd4a5736c4096b9afeda9dd119d6a180d81
+omit: __omit_place_holder__9143064516c6629040f32975bda4087d0b4a28f8
 playbook_dir: /Users/chrisjsewell/Documents/GitHub/aiida-performance
 slurm-node:
     slurm-node:
@@ -1335,15 +1338,15 @@ slurm-node:
             com.docker.compose.version: 1.26.0
         networks:
             aiida-performance_default:
-                IPAddress: 172.29.0.3
+                IPAddress: 172.31.0.2
                 IPPrefixLen: 16
                 aliases:
                 - slurm-node
-                - 37fbdf73bc37
+                - 82bdfc55f275
                 globalIPv6: ''
                 globalIPv6PrefixLen: 0
                 links: null
-                macAddress: 02:42:ac:1d:00:03
+                macAddress: 02:42:ac:1f:00:02
         state:
             running: true
             status: running
