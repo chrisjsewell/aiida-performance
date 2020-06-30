@@ -3,27 +3,16 @@
   gather_facts: yes
 
   vars:
-    RERUN: false
     PYTHON_VERSION: "3.7"
     GIT_BRANCH: "release/1.3.0"
-    IMAGE_TAG: "py3.7-v1.3.0"
     AIIDA_BACKEND: "django"
-    OUTPUT_FOLDER: "outputs/{{ IMAGE_TAG }}-{{ AIIDA_BACKEND }}"
+
+    IMAGE_TAG: "{{ GIT_BRANCH | replace('/', '_') }}-py{{ PYTHON_VERSION }}"
+    OUTPUT_FOLDER: "docs/analyses/{{ IMAGE_TAG }}-{{ AIIDA_BACKEND }}"
     INITIAL_WAIT: 30
     DOCKER_DOWN: true
 
   tasks:
-
-    - name: Remove outputs
-      when: RERUN
-      file:
-        path: outputs/
-        state: absent
-
-    - name: Add outputs folder
-      file:
-        path: "outputs/"
-        state: directory
 
     - name: "Add outputs folder: {{ OUTPUT_FOLDER }}"
       file:
@@ -78,6 +67,22 @@
           cmd: >
             docker exec --user aiida aiida-core verdi run tests/db_stats.py --path "/home/aiida/outputs" --name "final" indices
           creates: "{{ OUTPUT_FOLDER }}/final_indices.html"
+
+      - name: Read run_times.yaml
+        slurp:
+          src: "{{ OUTPUT_FOLDER }}/run_times.yml"
+        register: run_times
+
+      - name: Set run times fact
+        set_fact:
+          run_times: "{{ run_times['content'] | b64decode }}"
+
+      - name: make documentation main page
+        template: 
+          src: templates/front_page.j2.md
+          dest: "{{ OUTPUT_FOLDER }}/index.md"
+        vars:
+          analysis_title: "{{ IMAGE_TAG }}-{{ AIIDA_BACKEND }}"
 
       always:
         - name: Tear down existing docker services

@@ -23,7 +23,7 @@ def memory_db_df():
     import pandas as pd
     result = execute_raw(
         r"""
-    SELECT 
+    SELECT
         datname,
         pg_database_size(datname)
         from pg_database
@@ -45,7 +45,7 @@ def memory_pg_classes_df():
     import pandas as pd
     result = execute_raw(
         r"""
-    SELECT 
+    SELECT
         sum(pg_relation_size(pg_class.oid))::bigint,
         nspname,
         CASE pg_class.relkind
@@ -70,14 +70,14 @@ def memory_pg_classes_df():
 
 def memory_tables_df():
     """Return statistics on indices.
-    
+
     See https://www.postgresql.org/docs/current/monitoring-stats.html
     """
     import pandas as pd
     result = execute_raw(
         r"""
-    select 
-        relname, 
+    select
+        relname,
         pg_relation_size(relname::regclass) as table_size,
         pg_total_relation_size(relname::regclass) - pg_relation_size(relname::regclass) as index_size,
         pg_total_relation_size(relname::regclass) as total_size
@@ -117,7 +117,7 @@ def indices_list_df():
         and a.attnum = ANY(ix.indkey)
         and t.relkind = 'r'
         and t.relname not like 'pg_%'
-    group by  
+    group by
         t.relname,
         i.relname
     order by
@@ -132,7 +132,7 @@ def indices_list_df():
 
 def indices_stats_df(sort_size=False, with_sql=False):
     """Return statistics on indices.
-    
+
     See https://www.postgresql.org/docs/current/monitoring-stats.html
     """
     import pandas as pd
@@ -149,25 +149,25 @@ def indices_stats_df(sort_size=False, with_sql=False):
         t.idx_tup_fetch AS TotalTupleFetched,
         pgi.indexdef AS IndexDef
     FROM pg_tables AS pt
-    LEFT OUTER JOIN pg_class AS pc 
+    LEFT OUTER JOIN pg_class AS pc
         ON pt.tablename=pc.relname
     LEFT OUTER JOIN
-    ( 
-        SELECT 
+    (
+        SELECT
             pc.relname AS TableName,
             pc2.relname AS IndexName,
             psai.idx_scan,
             psai.idx_tup_read,
             psai.idx_tup_fetch,
-            psai.indexrelname 
-        FROM 
+            psai.indexrelname
+        FROM
             pg_index AS pi
-        JOIN pg_class AS pc 
+        JOIN pg_class AS pc
             ON pc.oid = pi.indrelid
-        JOIN pg_class AS pc2 
+        JOIN pg_class AS pc2
             ON pc2.oid = pi.indexrelid
-        JOIN pg_stat_all_indexes AS psai 
-            ON pi.indexrelid = psai.indexrelid 
+        JOIN pg_stat_all_indexes AS psai
+            ON pi.indexrelid = psai.indexrelid
     ) AS T
         ON pt.tablename = T.TableName
     LEFT OUTER JOIN pg_indexes as pgi
@@ -248,7 +248,7 @@ def cache_hit_ratio():
     """Ideally hit_ration should be > 90%"""
     result = execute_raw(
         r"""
-    SELECT 
+    SELECT
         sum(blks_hit)*100/sum(blks_hit+blks_read) as hit_ratio
         from pg_stat_database;
     """
@@ -267,7 +267,7 @@ def anomalies_df():
     import pandas as pd
     result = execute_raw(
         r"""
-    SELECT 
+    SELECT
         datname,
         (xact_commit*100)/nullif(xact_commit+xact_rollback,0) as c_commit_ratio,
         (xact_rollback*100)/nullif(xact_commit+xact_rollback, 0) as c_rollback_ratio,
@@ -298,7 +298,7 @@ def write_activity_df(limit=50):
     """
     hot_rate = rows HOT updated / total rows updated
     (Heap Only Tuple means with no separate index update required)
-    
+
     Heap Only Tuple (HOT) means, creating a new update tuple if possible on the same page as the old tuple.
     Ideally hot_rate should be close to 100.
     You might be blocking HOT updates with indexes on updated columns. If those are expendable, you might get          better overall performance without them.
@@ -340,7 +340,7 @@ def write_activity_df(limit=50):
 def cached_indices():
     result = execute_raw(
         r"""
-    SELECT 
+    SELECT
         sum(idx_blks_read) as idx_read,
         sum(idx_blks_hit) as idx_hit,
         (sum(idx_blks_hit) - sum(idx_blks_read)) / sum(idx_blks_hit) as ratio
@@ -396,13 +396,13 @@ def query_reset_stats():
 @requires_pg_stat
 def query_stats_df(limit=100):
     """Return most CPU intensive queries
-    
+
     See: https://www.postgresql.org/docs/9.4/pgstatstatements.html
     """
     import pandas as pd
     result = execute_raw(
         r"""
-    SELECT 
+    SELECT
         query,
         round(total_time::numeric, 2) AS total_time,
         calls,
@@ -427,16 +427,16 @@ def query_stats_df(limit=100):
 @requires_pg_stat
 def query_write_df():
     """Return most writing (to shared_buffers) queries
-    
+
     See: https://www.postgresql.org/docs/9.4/pgstatstatements.html
     """
     import pandas as pd
     result = execute_raw(
         r"""
     SELECT
-        query, 
-        shared_blks_dirtied 
-    from pg_stat_statements 
+        query,
+        shared_blks_dirtied
+    from pg_stat_statements
     where shared_blks_dirtied > 0
     order by 2 desc;
     """
@@ -459,4 +459,3 @@ if __name__ == "__main__":
             Path(args.path).joinpath(args.name + "_indices.html").write_text(indices_stats_df().to_html())
         elif _command == "reset":
             query_reset_stats()
-

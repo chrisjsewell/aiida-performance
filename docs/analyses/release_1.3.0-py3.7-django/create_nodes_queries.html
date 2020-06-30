@@ -1,0 +1,213 @@
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sql</th>
+      <th>time_seconds</th>
+      <th>calls</th>
+      <th>rows</th>
+      <th>cpu_percent</th>
+      <th>type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>UPDATE "db_dbnode" SET "mtime" = $1::timestamptz, "extras" = $2 WHERE "db_dbnode"."id" = $3</td>
+      <td>1.400000e-04</td>
+      <td>1000</td>
+      <td>1000</td>
+      <td>28.15</td>
+      <td>UPDATE</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>INSERT INTO "db_dbnode" ("uuid", "node_type", "process_type", "label", "description", "ctime", "mtime", "user_id", "dbcomputer_id", "attributes", "extras") VALUES ($1::uuid, $2, $3, $4, $5, $6::timestamptz, $7::timestamptz, $8, $9, $10, $11) RETURNING "db_dbnode"."id"</td>
+      <td>1.210200e-04</td>
+      <td>1000</td>
+      <td>1000</td>
+      <td>24.33</td>
+      <td>INSERT</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>SELECT "db_dbnode"."id", "db_dbnode"."extras" FROM "db_dbnode" WHERE "db_dbnode"."id" = $1</td>
+      <td>5.418000e-05</td>
+      <td>1000</td>
+      <td>1000</td>
+      <td>10.89</td>
+      <td>SELECT</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>SELECT "db_dbnode"."id", "db_dbnode"."attributes" FROM "db_dbnode" WHERE "db_dbnode"."id" = $1</td>
+      <td>5.375000e-05</td>
+      <td>1000</td>
+      <td>1000</td>
+      <td>10.81</td>
+      <td>SELECT</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>SELECT $2 FROM ONLY "public"."db_dbuser" x WHERE "id" OPERATOR(pg_catalog.=) $1 FOR KEY SHARE OF x</td>
+      <td>5.362000e-05</td>
+      <td>1000</td>
+      <td>1000</td>
+      <td>10.78</td>
+      <td>SELECT</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>SELECT "db_dbnode"."id", "db_dbnode"."dbcomputer_id" FROM "db_dbnode" WHERE "db_dbnode"."id" = $1</td>
+      <td>5.027000e-05</td>
+      <td>1000</td>
+      <td>1000</td>
+      <td>10.11</td>
+      <td>SELECT</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>COMMIT</td>
+      <td>1.160000e-05</td>
+      <td>1000</td>
+      <td>0</td>
+      <td>2.33</td>
+      <td>COMMIT</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>BEGIN</td>
+      <td>1.134000e-05</td>
+      <td>1003</td>
+      <td>0</td>
+      <td>2.28</td>
+      <td>BEGIN</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>DECLARE "c_7f3ffd199650_1" CURSOR WITHOUT HOLD FOR SELECT db_dbuser_1.id AS db_dbuser_1_id, db_dbuser_1.email AS db_dbuser_1_email, db_dbuser_1.first_name AS db_dbuser_1_first_name, db_dbuser_1.last_name AS db_dbuser_1_last_name, db_dbuser_1.institution AS db_dbuser_1_institution \nFROM db_dbuser AS db_dbuser_1 \nWHERE db_dbuser_1.email = 'ringo@starr.com' \n LIMIT 2</td>
+      <td>3.800000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.08</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>SET TIME ZONE 'UTC'</td>
+      <td>3.600000e-07</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0.07</td>
+      <td>SET</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>SELECT val FROM db_dbsetting WHERE key = $1</td>
+      <td>2.100000e-07</td>
+      <td>4</td>
+      <td>4</td>
+      <td>0.04</td>
+      <td>SELECT</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>select pg_stat_statements_reset()</td>
+      <td>1.900000e-07</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.04</td>
+      <td>SELECT</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>ROLLBACK</td>
+      <td>1.100000e-07</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0.02</td>
+      <td>ROLLBACK</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>CLOSE "c_7f3ffd199650_1"</td>
+      <td>9.000000e-08</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.02</td>
+      <td>CLOSE</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>SELECT CAST($1 AS VARCHAR(60)) AS anon_1</td>
+      <td>5.000000e-08</td>
+      <td>2</td>
+      <td>2</td>
+      <td>0.01</td>
+      <td>SELECT</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>SELECT t.oid, typarray\nFROM pg_type t JOIN pg_namespace ns\n    ON typnamespace = ns.oid\nWHERE typname = $1</td>
+      <td>5.000000e-08</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.01</td>
+      <td>SELECT</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>select current_schema()</td>
+      <td>4.000000e-08</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.01</td>
+      <td>SELECT</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>FETCH FORWARD 1 FROM "c_7f3ffd199650_1"</td>
+      <td>4.000000e-08</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.01</td>
+      <td>FETCH</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>select version()</td>
+      <td>2.000000e-08</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.00</td>
+      <td>SELECT</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>show standard_conforming_strings</td>
+      <td>2.000000e-08</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.00</td>
+      <td>SHOW</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>FETCH FORWARD ALL FROM "c_7f3ffd199650_1"</td>
+      <td>2.000000e-08</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.00</td>
+      <td>FETCH</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>show transaction isolation level</td>
+      <td>1.000000e-08</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.00</td>
+      <td>SHOW</td>
+    </tr>
+  </tbody>
+</table>

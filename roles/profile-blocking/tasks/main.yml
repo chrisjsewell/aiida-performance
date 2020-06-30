@@ -29,7 +29,7 @@
 
 - name: "Convert profile output to SVG: {{ TEST_NAME }}"
   shell:
-    cmd: > 
+    cmd: >
       docker run --rm --name flamegraph
       -v "$PWD/plotting":/usr/src/myapp/plotting -v "$PWD/{{ OUTPUT_FOLDER }}":/usr/src/myapp/outputs
       -w /usr/src/myapp perl:5.20
@@ -43,3 +43,11 @@
     cmd: >
       {{ CMD_PREFIX }}verdi run tests/db_stats.py --path "/home/aiida/outputs" --name "{{ TEST_NAME }}" queries reset
     creates: "{{ OUTPUT_FOLDER }}/{{ TEST_NAME }}_queries.html"
+
+- name: "Make documentation page"
+  template: 
+    src: test-analysis.j2.md
+    dest: "{{ OUTPUT_FOLDER }}/{{ TEST_NAME }}.analysis.md"
+  vars:
+    test_name: "{{ TEST_NAME }}"
+

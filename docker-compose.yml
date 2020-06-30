@@ -5,7 +5,7 @@ services:
   core:
     build:
       context: build-aiida/
-      args: 
+      args:
         PYTHON_VERSION: "${PYTHON_VERSION}"
         GIT_BRANCH: "${GIT_BRANCH}"
     image: "chrisjsewell/aiida-profile:${IMAGE_TAG}"
@@ -17,12 +17,12 @@ services:
     volumes:
       - "./init-aiida:/etc/my_init.d"
       - "./tests:/home/aiida/tests"
-      - "./outputs/${IMAGE_TAG}-${AIIDA_BACKEND}:/home/aiida/outputs"
+      - "./docs/outputs/${IMAGE_TAG}-${AIIDA_BACKEND}:/home/aiida/outputs"
       - "./ssh_keys:/home/aiida/.ssh"
       - "aiida-object-store:/home/aiida/.aiida"
     environment:
       AIIDA_BACKEND: "${AIIDA_BACKEND}"
-    cap_add: 
+    cap_add:
       # this is required by py-spy: https://github.com/benfred/py-spy#how-do-i-run-py-spy-in-docker
       - SYS_PTRACE
 
