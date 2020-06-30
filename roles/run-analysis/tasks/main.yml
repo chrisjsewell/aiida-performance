@@ -46,10 +46,12 @@
           'until [ -f /opt/.initialised ] 2> /dev/null; do echo -n .; sleep 1; done'
       changed_when: False
 
-    - name: touch run_times.yaml
+    - name: touch run_times.yml
+      become: true
       file:
         path: "{{ OUTPUT_FOLDER }}/run_times.yml"
         state: touch
+        mode: u=rw,g=rw,o=rw
 
     - include_role:
         name: profile-blocking
