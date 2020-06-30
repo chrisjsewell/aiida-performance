@@ -50,6 +50,7 @@
     creates: "{{ OUTPUT_FOLDER }}/{{ TEST_NAME }}_queries.html"
 
 - name: "Make documentation page"
+  become: true  # this is required on github actions
   template:
     src: test-analysis.j2.md
     dest: "{{ OUTPUT_FOLDER }}/{{ TEST_NAME }}.analysis.md"
