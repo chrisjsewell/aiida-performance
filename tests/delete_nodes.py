@@ -11,4 +11,4 @@ else:
     from aiida import orm
     from aiida.manage.database.delete.nodes import delete_nodes
     group, _ = orm.Group.objects.get_or_create("delete-nodes")
-    delete_nodes([node.pk for node in group.nodes[:]])
+    delete_nodes([node.pk for node in group.nodes[:]], force=True)

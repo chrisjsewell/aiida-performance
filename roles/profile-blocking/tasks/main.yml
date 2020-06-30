@@ -16,6 +16,8 @@
       {{ CMD_PREFIX }}verdi run tests/db_stats.py reset
   changed_when: False
 
+# TODO should remove any existing run time
+
 - name: "Run test script: {{ TEST_NAME }}"
   command:
     cmd: >
@@ -36,6 +38,8 @@
       perl plotting/flamegraph.pl --inverted --title {{ TEST_NAME }} outputs/{{ TEST_NAME }}.prof
       > {{ OUTPUT_FOLDER }}/{{ TEST_NAME }}.svg
     creates: "{{ OUTPUT_FOLDER }}/{{ TEST_NAME }}.svg"
+
+# TODO ensure the svg is removed if the above fails, since it is still created (containing an error message)
 
 - name: "Dump database query stats: {{ TEST_NAME }}"
   when: test_output.changed

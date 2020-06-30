@@ -4,6 +4,8 @@
 
   vars:
     ANALYSIS_FOLDER: "docs/analyses/"
+    INITIAL_WAIT: 30
+    DOCKER_DOWN: true
 
   tasks:
 
@@ -18,6 +20,7 @@
       # TODO probably a better role to do this
       command: cat {{ item.path }}/run_data.yaml
       loop: "{{ result_of_find.files | flatten(levels=1) }}"
+      changed_when: false
 
     - name: Run analysis for all directories
       include_role:

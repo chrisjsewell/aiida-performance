@@ -30,6 +30,7 @@
       GIT_BRANCH: "{{ GIT_BRANCH }}"
       IMAGE_TAG: "{{ IMAGE_TAG }}"
       AIIDA_BACKEND: "{{ AIIDA_BACKEND }}"
+      OUTPUT_FOLDER: "{{ OUTPUT_FOLDER }}"
 
   # TODO docker push
 

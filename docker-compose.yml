@@ -17,7 +17,7 @@ services:
     volumes:
       - "./init-aiida:/etc/my_init.d"
       - "./tests:/home/aiida/tests"
-      - "./docs/outputs/${IMAGE_TAG}-${AIIDA_BACKEND}:/home/aiida/outputs"
+      - "./${OUTPUT_FOLDER}:/home/aiida/outputs"
       - "./ssh_keys:/home/aiida/.ssh"
       - "aiida-object-store:/home/aiida/.aiida"
     environment:
