@@ -19,6 +19,7 @@
 # TODO should remove any existing run time
 
 - name: "Run test script: {{ TEST_NAME }}"
+  become: true
   command:
     cmd: >
       {{ CMD_PREFIX }}/usr/bin/time -f "{{ TEST_NAME }}: %e" -o /home/aiida/outputs/run_times.yml -a --quiet

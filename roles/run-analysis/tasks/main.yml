@@ -67,7 +67,7 @@
         loop_var: TEST_NAME
 
     - name: "Dump database final indices stats"
-      become: true
+      become: true  # this is require on github actions
       command:
         cmd: >
           docker exec --user aiida aiida-core verdi run tests/db_stats.py --path "/home/aiida/outputs" --name "final" indices
@@ -83,7 +83,7 @@
         run_times: "{{ run_times['content'] | b64decode }}"
 
     - name: make documentation main page
-      become: true
+      become: true  # this is require on github actions
       template:
         src: templates/front_page.j2.md
         dest: "{{ OUTPUT_FOLDER }}/index.md"
@@ -102,3 +102,6 @@
           GIT_BRANCH: "{{ GIT_BRANCH }}"
           IMAGE_TAG: "{{ IMAGE_TAG }}"
           AIIDA_BACKEND: "{{ AIIDA_BACKEND }}"
+
+    # TODO to make a write a number of the files in github actions
+    # we have to use become, should we change permissions at the end
