@@ -58,11 +58,11 @@
       loop:
         # TODO make variable
         - create_nodes
-        # - delete_nodes
-        # - workfunction
-        # - calcjob-add-local
-        # - workchain-multiadd-local
-        # - calcjob-add-slurm
+        - delete_nodes
+        - workfunction
+        - calcjob-add-local
+        - workchain-multiadd-local
+        - calcjob-add-slurm
       loop_control:
         loop_var: TEST_NAME
 
@@ -105,11 +105,4 @@
           OUTPUT_FOLDER: "{{ OUTPUT_FOLDER }}"
 
     # TODO to make a write a number of the files in github actions
-    # we have to use # become, should we change permissions at the end
-
-      - name: fix permissions
-        become: true
-        file:
-          path: "{{ OUTPUT_FOLDER }}"
-          recurse: true
-          mode: u=rw,g=rw,o=rw
+    # we have to use become, should we change permissions at the end

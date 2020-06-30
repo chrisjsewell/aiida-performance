@@ -1,0 +1,915 @@
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sql</th>
+      <th>time_seconds</th>
+      <th>calls</th>
+      <th>rows</th>
+      <th>cpu_percent</th>
+      <th>type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>SELECT db_dbnode.attributes AS db_dbnode_attributes \nFROM db_dbnode \nWHERE db_dbnode.id = $1</td>
+      <td>3.765000e-05</td>
+      <td>567</td>
+      <td>567</td>
+      <td>23.56</td>
+      <td>SELECT</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>SELECT db_dbnode.id AS db_dbnode_id, db_dbnode.uuid AS db_dbnode_uuid, db_dbnode.node_type AS db_dbnode_node_type, db_dbnode.process_type AS db_dbnode_process_type, db_dbnode.label AS db_dbnode_label, db_dbnode.description AS db_dbnode_description, db_dbnode.ctime AS db_dbnode_ctime, db_dbnode.mtime AS db_dbnode_mtime, db_dbnode.attributes AS db_dbnode_attributes, db_dbnode.extras AS db_dbnode_extras, db_dbnode.dbcomputer_id AS db_dbnode_dbcomputer_id, db_dbnode.user_id AS db_dbnode_user_id \nFROM db_dbnode \nWHERE db_dbnode.id = $1</td>
+      <td>2.178000e-05</td>
+      <td>290</td>
+      <td>290</td>
+      <td>13.63</td>
+      <td>SELECT</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>UPDATE db_dbnode SET mtime=$1::timestamptz, attributes=$2 WHERE db_dbnode.id = $3</td>
+      <td>2.089000e-05</td>
+      <td>152</td>
+      <td>152</td>
+      <td>13.07</td>
+      <td>UPDATE</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>SELECT c.relname FROM pg_class c JOIN pg_namespace n ON n.oid = c.relnamespace WHERE n.nspname = $1 AND c.relkind in ($2, $3)</td>
+      <td>5.030000e-06</td>
+      <td>34</td>
+      <td>374</td>
+      <td>3.14</td>
+      <td>SELECT</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>INSERT INTO db_dblink (input_id, output_id, label, type) VALUES ($1, $2, $3, $4) RETURNING db_dblink.id</td>
+      <td>3.010000e-06</td>
+      <td>24</td>
+      <td>24</td>
+      <td>1.88</td>
+      <td>INSERT</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>BEGIN</td>
+      <td>2.550000e-06</td>
+      <td>265</td>
+      <td>0</td>
+      <td>1.60</td>
+      <td>BEGIN</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>COMMIT</td>
+      <td>2.400000e-06</td>
+      <td>227</td>
+      <td>0</td>
+      <td>1.50</td>
+      <td>COMMIT</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>SELECT db_dbcomputer.metadata AS db_dbcomputer_metadata, db_dbcomputer.id AS db_dbcomputer_id, db_dbcomputer.uuid AS db_dbcomputer_uuid, db_dbcomputer.name AS db_dbcomputer_name, db_dbcomputer.hostname AS db_dbcomputer_hostname, db_dbcomputer.description AS db_dbcomputer_description, db_dbcomputer.scheduler_type AS db_dbcomputer_scheduler_type, db_dbcomputer.transport_type AS db_dbcomputer_transport_type \nFROM db_dbcomputer \nWHERE db_dbcomputer.id = $1</td>
+      <td>2.350000e-06</td>
+      <td>44</td>
+      <td>44</td>
+      <td>1.47</td>
+      <td>SELECT</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>INSERT INTO db_dbnode (uuid, node_type, process_type, label, description, ctime, mtime, attributes, extras, dbcomputer_id, user_id) VALUES ($1, $2, $3, $4, $5, $6::timestamptz, $7::timestamptz, $8, $9, $10, $11) RETURNING db_dbnode.id</td>
+      <td>2.250000e-06</td>
+      <td>18</td>
+      <td>18</td>
+      <td>1.41</td>
+      <td>INSERT</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>SELECT db_dbsetting.id AS db_dbsetting_id, db_dbsetting.key AS db_dbsetting_key, db_dbsetting.val AS db_dbsetting_val, db_dbsetting.description AS db_dbsetting_description, db_dbsetting.time AS db_dbsetting_time \nFROM db_dbsetting \nWHERE db_dbsetting.key = $1 \n LIMIT $2</td>
+      <td>1.710000e-06</td>
+      <td>32</td>
+      <td>32</td>
+      <td>1.07</td>
+      <td>SELECT</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>SELECT db_dbuser.id AS db_dbuser_id, db_dbuser.email AS db_dbuser_email, db_dbuser.first_name AS db_dbuser_first_name, db_dbuser.last_name AS db_dbuser_last_name, db_dbuser.institution AS db_dbuser_institution \nFROM db_dbuser \nWHERE db_dbuser.id = $1</td>
+      <td>1.540000e-06</td>
+      <td>37</td>
+      <td>37</td>
+      <td>0.96</td>
+      <td>SELECT</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>UPDATE db_dbsetting SET val=$1, time=$2::timestamptz WHERE db_dbsetting.id = $3</td>
+      <td>1.410000e-06</td>
+      <td>32</td>
+      <td>32</td>
+      <td>0.88</td>
+      <td>UPDATE</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>UPDATE db_dbnode SET mtime=$1::timestamptz, extras=$2 WHERE db_dbnode.id = $3</td>
+      <td>1.370000e-06</td>
+      <td>18</td>
+      <td>18</td>
+      <td>0.86</td>
+      <td>UPDATE</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>DECLARE "c_7f078e3f2350_3" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.output_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.input_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2672 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('input_calc', 'input_work')</td>
+      <td>1.360000e-06</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.85</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>SELECT db_dbcomputer.metadata AS db_dbcomputer_metadata \nFROM db_dbcomputer \nWHERE db_dbcomputer.id = $1</td>
+      <td>1.350000e-06</td>
+      <td>31</td>
+      <td>31</td>
+      <td>0.85</td>
+      <td>SELECT</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>SELECT $2 FROM ONLY "public"."db_dbnode" x WHERE "id" OPERATOR(pg_catalog.=) $1 FOR KEY SHARE OF x</td>
+      <td>1.280000e-06</td>
+      <td>48</td>
+      <td>48</td>
+      <td>0.80</td>
+      <td>SELECT</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>DECLARE "c_7f078c24eb50_56" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.output_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.input_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2684 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('input_calc')</td>
+      <td>1.130000e-06</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.71</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>DECLARE "c_7f078d47db90_1f" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2676 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('create', 'return')</td>
+      <td>1.080000e-06</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.68</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>SELECT db_dbcomputer.scheduler_type AS db_dbcomputer_scheduler_type \nFROM db_dbcomputer \nWHERE db_dbcomputer.id = $1</td>
+      <td>9.800000e-07</td>
+      <td>20</td>
+      <td>20</td>
+      <td>0.62</td>
+      <td>SELECT</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>DECLARE "c_7f078f16da10_1" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id \nFROM db_dbnode AS db_dbnode_1 \nWHERE CAST(db_dbnode_1.node_type AS VARCHAR) LIKE 'data.code.%' AND db_dbnode_1.label = 'add-slurm' \n LIMIT 2</td>
+      <td>9.000000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.56</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>DECLARE "c_7f078c3b3250_20" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2676 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('create', 'return')</td>
+      <td>7.100000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.45</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>SELECT $2 FROM ONLY "public"."db_dbuser" x WHERE "id" OPERATOR(pg_catalog.=) $1 FOR KEY SHARE OF x</td>
+      <td>7.100000e-07</td>
+      <td>18</td>
+      <td>18</td>
+      <td>0.44</td>
+      <td>SELECT</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>DECLARE "c_7f078c25c510_64" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2684 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('create', 'return')</td>
+      <td>7.100000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.45</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>SELECT db_dbnode.extras AS db_dbnode_extras \nFROM db_dbnode \nWHERE db_dbnode.id = $1</td>
+      <td>6.700000e-07</td>
+      <td>18</td>
+      <td>18</td>
+      <td>0.42</td>
+      <td>SELECT</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>SELECT db_dbauthinfo.auth_params AS db_dbauthinfo_auth_params \nFROM db_dbauthinfo \nWHERE db_dbauthinfo.id = $1</td>
+      <td>6.100000e-07</td>
+      <td>16</td>
+      <td>16</td>
+      <td>0.38</td>
+      <td>SELECT</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>DECLARE "c_7f078c320c90_26" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2676 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('create') AND CAST(db_dblink_1.label AS VARCHAR) LIKE 'remote_folder'</td>
+      <td>6.000000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.38</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>SELECT db_dbcomputer.hostname AS db_dbcomputer_hostname \nFROM db_dbcomputer \nWHERE db_dbcomputer.id = $1</td>
+      <td>5.800000e-07</td>
+      <td>16</td>
+      <td>16</td>
+      <td>0.36</td>
+      <td>SELECT</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>SELECT db_dbauthinfo.metadata AS db_dbauthinfo_metadata, db_dbauthinfo.id AS db_dbauthinfo_id, db_dbauthinfo.aiidauser_id AS db_dbauthinfo_aiidauser_id, db_dbauthinfo.dbcomputer_id AS db_dbauthinfo_dbcomputer_id, db_dbauthinfo.auth_params AS db_dbauthinfo_auth_params, db_dbauthinfo.enabled AS db_dbauthinfo_enabled \nFROM db_dbauthinfo \nWHERE db_dbauthinfo.id = $1</td>
+      <td>5.800000e-07</td>
+      <td>12</td>
+      <td>12</td>
+      <td>0.36</td>
+      <td>SELECT</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>WITH RECURSIVE anon_3(ancestor_id, descendant_id, depth) AS \n(SELECT db_dblink_1.input_id AS ancestor_id, db_dblink_1.output_id AS descendant_id, CAST($1 AS INTEGER) AS depth \nFROM db_dbnode AS db_dbnode_3 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_3.id \nWHERE CAST(db_dbnode_3.node_type AS VARCHAR) LIKE $2 AND db_dbnode_3.id IS NULL AND db_dblink_1.type IN ($3, $4) UNION ALL SELECT anon_3.ancestor_id AS ancestor_id, db_dblink_2.output_id AS descendant_id, anon_3.depth + CAST($5 AS INTEGER) AS current_depth \nFROM anon_3 JOIN db_dblink AS db_dblink_2 ON db_dblink_2.input_id = anon_3.descendant_id \nWHERE db_dblink_2.type IN ($6, $7))\n SELECT count(*) AS count_1 \nFROM (SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id \nFROM db_dbnode AS db_dbnode_2 JOIN anon_3 AS anon_2 ON anon_2.ancestor_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON anon_2.descendant_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE $8 AND db_dbnode_2.id IS NULL AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE $9 AND db_dbnode_1.id = $10) AS anon_1</td>
+      <td>5.500000e-07</td>
+      <td>18</td>
+      <td>18</td>
+      <td>0.34</td>
+      <td>WITH</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>SELECT db_dbcomputer.transport_type AS db_dbcomputer_transport_type \nFROM db_dbcomputer \nWHERE db_dbcomputer.id = $1</td>
+      <td>5.400000e-07</td>
+      <td>16</td>
+      <td>16</td>
+      <td>0.34</td>
+      <td>SELECT</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>SELECT db_dbnode.process_type AS db_dbnode_process_type \nFROM db_dbnode \nWHERE db_dbnode.id = $1</td>
+      <td>5.300000e-07</td>
+      <td>16</td>
+      <td>16</td>
+      <td>0.33</td>
+      <td>SELECT</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>DECLARE "c_7f078c24ac10_5b" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2684 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('create', 'return')</td>
+      <td>4.800000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.30</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>DECLARE "c_7f078c3b32d0_15" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.output_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.input_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2674 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('create')</td>
+      <td>4.700000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.29</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>DECLARE "c_7f078d47da90_14" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2672 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('create') AND CAST(db_dblink_1.label AS VARCHAR) LIKE 'retrieved'</td>
+      <td>4.400000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.27</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>DECLARE "c_7f078c35d990_61" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2684 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE 'data.folder.%' AND CAST(db_dblink_1.label AS VARCHAR) LIKE 'retrieved'</td>
+      <td>4.300000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.27</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>DECLARE "c_7f078c32fc90_29" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2676 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('create', 'return')</td>
+      <td>4.200000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.27</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>DECLARE "c_7f078c367310_37" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.output_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.input_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2680 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('input_calc', 'input_work')</td>
+      <td>4.200000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.26</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>DECLARE "c_7f078c335590_65" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2684 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%'</td>
+      <td>4.200000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.26</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>DECLARE "c_7f078c3f0bd0_54" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2684 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('create', 'return')</td>
+      <td>4.100000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.26</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>DECLARE "c_7f078c32f490_47" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2680 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE 'data.folder.%' AND CAST(db_dblink_1.label AS VARCHAR) LIKE 'retrieved'</td>
+      <td>4.100000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.25</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>DECLARE "c_7f078c38be50_2d" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2676 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE 'data.folder.%' AND CAST(db_dblink_1.label AS VARCHAR) LIKE 'retrieved'</td>
+      <td>4.100000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.26</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>DECLARE "c_7f078c3a8910_40" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2680 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('create') AND CAST(db_dblink_1.label AS VARCHAR) LIKE 'remote_folder'</td>
+      <td>4.100000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.26</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>DECLARE "c_7f078c288910_52" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2684 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('create', 'return')</td>
+      <td>4.000000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.25</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>DECLARE "c_7f078c367210_51" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.output_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.input_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2684 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('input_calc', 'input_work')</td>
+      <td>4.000000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.25</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>DECLARE "c_7f078c3fbf90_35" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2676 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('create') AND CAST(db_dblink_1.label AS VARCHAR) LIKE 'sum'</td>
+      <td>4.000000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.25</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>WITH RECURSIVE anon_3(ancestor_id, descendant_id, depth) AS \n(SELECT db_dblink_1.input_id AS ancestor_id, db_dblink_1.output_id AS descendant_id, CAST($1 AS INTEGER) AS depth \nFROM db_dbnode AS db_dbnode_3 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_3.id \nWHERE CAST(db_dbnode_3.node_type AS VARCHAR) LIKE $2 AND db_dbnode_3.id = $3 AND db_dblink_1.type IN ($4, $5) UNION ALL SELECT anon_3.ancestor_id AS ancestor_id, db_dblink_2.output_id AS descendant_id, anon_3.depth + CAST($6 AS INTEGER) AS current_depth \nFROM anon_3 JOIN db_dblink AS db_dblink_2 ON db_dblink_2.input_id = anon_3.descendant_id \nWHERE db_dblink_2.type IN ($7, $8))\n SELECT count(*) AS count_1 \nFROM (SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id \nFROM db_dbnode AS db_dbnode_2 JOIN anon_3 AS anon_2 ON anon_2.ancestor_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON anon_2.descendant_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE $9 AND db_dbnode_2.id = $10 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE $11 AND db_dbnode_1.id = $12) AS anon_1</td>
+      <td>4.000000e-07</td>
+      <td>4</td>
+      <td>4</td>
+      <td>0.25</td>
+      <td>WITH</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>DECLARE "c_7f078c272590_58" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2684 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE 'data.remote.%' AND CAST(db_dblink_1.label AS VARCHAR) LIKE 'remote_folder'</td>
+      <td>4.000000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.25</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>DECLARE "c_7f078c406510_69" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2684 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('create') AND CAST(db_dblink_1.label AS VARCHAR) LIKE 'sum'</td>
+      <td>3.800000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.24</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>DECLARE "c_7f078c2fc310_4e" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2680 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('create', 'return')</td>
+      <td>3.800000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.24</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>DECLARE "c_7f078c3fb510_1a" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2672 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('create', 'return')</td>
+      <td>3.800000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.24</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>DECLARE "c_7f078c2bd7d0_2b" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2676 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('create', 'return')</td>
+      <td>3.800000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.24</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>DECLARE "c_7f07a0064d10_6" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2672 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('create', 'return')</td>
+      <td>3.700000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.23</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>DECLARE "c_7f07a195a4d0_1b" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2672 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('create') AND CAST(db_dblink_1.label AS VARCHAR) LIKE 'sum'</td>
+      <td>3.700000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.23</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>DECLARE "c_7f078c308a10_24" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2676 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE 'data.remote.%' AND CAST(db_dblink_1.label AS VARCHAR) LIKE 'remote_folder'</td>
+      <td>3.700000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.23</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>DECLARE "c_7f078c2ddcd0_66" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2684 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%'</td>
+      <td>3.600000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.22</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>DECLARE "c_7f07a00024d0_5" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2672 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('create', 'return')</td>
+      <td>3.600000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.23</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>DECLARE "c_7f078c2dd9d0_5d" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2684 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('create', 'return')</td>
+      <td>3.500000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.22</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>DECLARE "c_7f07a00f6190_16" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2672 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('create', 'return')</td>
+      <td>3.500000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.22</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>DECLARE "c_7f078d47d0d0_8" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.output_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.input_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2672 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('input_calc')</td>
+      <td>3.500000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.22</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>DECLARE "c_7f078d47d810_3e" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2680 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE 'data.remote.%' AND CAST(db_dblink_1.label AS VARCHAR) LIKE 'remote_folder'</td>
+      <td>3.500000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.22</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>DECLARE "c_7f078e3f2dd0_31" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2676 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%'</td>
+      <td>3.500000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.22</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>61</th>
+      <td>DECLARE "c_7f078c30a690_33" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2676 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%'</td>
+      <td>3.500000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.22</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>62</th>
+      <td>DECLARE "c_7f078c288dd0_4a" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2680 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('create', 'return')</td>
+      <td>3.400000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.22</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>DECLARE "c_7f078c2fc510_62" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2684 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('create') AND CAST(db_dblink_1.label AS VARCHAR) LIKE 'retrieved'</td>
+      <td>3.400000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.21</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>64</th>
+      <td>ROLLBACK</td>
+      <td>3.400000e-07</td>
+      <td>38</td>
+      <td>0</td>
+      <td>0.21</td>
+      <td>ROLLBACK</td>
+    </tr>
+    <tr>
+      <th>65</th>
+      <td>DECLARE "c_7f078c3b3b90_53" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2684 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('create', 'return')</td>
+      <td>3.300000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.21</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>66</th>
+      <td>SELECT $2 FROM ONLY "public"."db_dbcomputer" x WHERE "id" OPERATOR(pg_catalog.=) $1 FOR KEY SHARE OF x</td>
+      <td>3.300000e-07</td>
+      <td>8</td>
+      <td>8</td>
+      <td>0.20</td>
+      <td>SELECT</td>
+    </tr>
+    <tr>
+      <th>67</th>
+      <td>DECLARE "c_7f078c2bd4d0_27" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2676 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('create', 'return')</td>
+      <td>3.300000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.21</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>68</th>
+      <td>DECLARE "c_7f078c315790_22" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.output_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.input_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2676 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('input_calc')</td>
+      <td>3.300000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.20</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>69</th>
+      <td>DECLARE "c_7f078c3fbc50_d" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2672 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('create', 'return')</td>
+      <td>3.200000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.20</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>70</th>
+      <td>DECLARE "c_7f078c406c90_c" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2672 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('create') AND CAST(db_dblink_1.label AS VARCHAR) LIKE 'remote_folder'</td>
+      <td>3.200000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.20</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>71</th>
+      <td>DECLARE "c_7f07a195abd0_1d" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.output_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.input_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2676 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('input_calc', 'input_work')</td>
+      <td>3.200000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.20</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>72</th>
+      <td>DECLARE "c_7f078c3b3850_34" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2676 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('create', 'return')</td>
+      <td>3.100000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.19</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>73</th>
+      <td>DECLARE "c_7f078d451550_1e" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2676 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('create', 'return')</td>
+      <td>3.100000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.19</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>74</th>
+      <td>DECLARE "c_7f078e3c31d0_f" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2672 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('create', 'return')</td>
+      <td>3.100000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.19</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>75</th>
+      <td>DECLARE "c_7f078c367d90_38" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2680 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('create', 'return')</td>
+      <td>3.100000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.20</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>76</th>
+      <td>DECLARE "c_7f078f328590_39" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2680 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('create', 'return')</td>
+      <td>3.100000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.19</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>77</th>
+      <td>DECLARE "c_7f078c3c2c90_3c" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.output_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.input_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2680 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('input_calc')</td>
+      <td>3.100000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.20</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>78</th>
+      <td>DECLARE "c_7f078c3c2050_13" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2672 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE 'data.folder.%' AND CAST(db_dblink_1.label AS VARCHAR) LIKE 'retrieved'</td>
+      <td>3.100000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.19</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>79</th>
+      <td>DECLARE "c_7f078c2a9d50_68" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2684 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('create', 'return')</td>
+      <td>3.100000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.20</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>80</th>
+      <td>DECLARE "c_7f078c272e10_5f" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2684 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('create', 'return')</td>
+      <td>3.100000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.19</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>81</th>
+      <td>DECLARE "c_7f078c35d490_30" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2676 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('create', 'return')</td>
+      <td>3.100000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.19</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>82</th>
+      <td>DECLARE "c_7f078c3eea50_45" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2680 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('create', 'return')</td>
+      <td>3.100000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.19</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>83</th>
+      <td>DECLARE "c_7f078e3b6810_4" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2672 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('create', 'return')</td>
+      <td>3.100000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.20</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>84</th>
+      <td>DECLARE "c_7f078e3b6ad0_3a" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2680 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('create', 'return')</td>
+      <td>3.100000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.19</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>85</th>
+      <td>DECLARE "c_7f078c2fc890_43" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2680 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('create', 'return')</td>
+      <td>3.100000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.19</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>86</th>
+      <td>DECLARE "c_7f078c35dc90_48" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2680 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('create') AND CAST(db_dblink_1.label AS VARCHAR) LIKE 'retrieved'</td>
+      <td>3.100000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.19</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>87</th>
+      <td>DECLARE "c_7f078c2a9d90_5a" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2684 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('create') AND CAST(db_dblink_1.label AS VARCHAR) LIKE 'remote_folder'</td>
+      <td>3.100000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.19</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>88</th>
+      <td>DECLARE "c_7f07a195a250_41" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2680 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('create', 'return')</td>
+      <td>3.100000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.19</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>89</th>
+      <td>DECLARE "c_7f07a195af10_2e" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2676 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('create') AND CAST(db_dblink_1.label AS VARCHAR) LIKE 'retrieved'</td>
+      <td>3.000000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.18</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>90</th>
+      <td>DECLARE "c_7f078d4518d0_11" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2672 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('create', 'return')</td>
+      <td>3.000000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.19</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>91</th>
+      <td>DECLARE "c_7f07a195aa50_4f" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2680 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%' AND db_dblink_1.type IN ('create') AND CAST(db_dblink_1.label AS VARCHAR) LIKE 'sum'</td>
+      <td>3.000000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.19</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>92</th>
+      <td>DECLARE "c_7f078c3fbf10_4d" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2680 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%'</td>
+      <td>2.900000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.18</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>93</th>
+      <td>DECLARE "c_7f078c288690_4b" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2680 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%'</td>
+      <td>2.900000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.18</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>94</th>
+      <td>DECLARE "c_7f078c35d690_17" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2672 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%'</td>
+      <td>2.900000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.18</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>DECLARE "c_7f078c30a1d0_32" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2676 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%'</td>
+      <td>2.900000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.18</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>DECLARE "c_7f078c3ee150_4c" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2680 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%'</td>
+      <td>2.900000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.18</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>DECLARE "c_7f078c36a210_67" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2684 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%'</td>
+      <td>2.900000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.18</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>98</th>
+      <td>DECLARE "c_7f078c367cd0_18" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2672 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE '%'</td>
+      <td>2.900000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.18</td>
+      <td>DECLARE</td>
+    </tr>
+    <tr>
+      <th>99</th>
+      <td>DECLARE "c_7f078c406610_a" CURSOR WITHOUT HOLD FOR SELECT db_dbnode_1.id AS db_dbnode_1_id, db_dbnode_1.uuid AS db_dbnode_1_uuid, db_dbnode_1.node_type AS db_dbnode_1_node_type, db_dbnode_1.process_type AS db_dbnode_1_process_type, db_dbnode_1.label AS db_dbnode_1_label, db_dbnode_1.description AS db_dbnode_1_description, db_dbnode_1.ctime AS db_dbnode_1_ctime, db_dbnode_1.mtime AS db_dbnode_1_mtime, db_dbnode_1.attributes AS db_dbnode_1_attributes, db_dbnode_1.extras AS db_dbnode_1_extras, db_dbnode_1.dbcomputer_id AS db_dbnode_1_dbcomputer_id, db_dbnode_1.user_id AS db_dbnode_1_user_id, db_dblink_1.type AS db_dblink_1_type, db_dblink_1.label AS db_dblink_1_label \nFROM db_dbnode AS db_dbnode_2 JOIN db_dblink AS db_dblink_1 ON db_dblink_1.input_id = db_dbnode_2.id JOIN db_dbnode AS db_dbnode_1 ON db_dblink_1.output_id = db_dbnode_1.id \nWHERE CAST(db_dbnode_2.node_type AS VARCHAR) LIKE '%' AND db_dbnode_2.id = 2672 AND CAST(db_dbnode_1.node_type AS VARCHAR) LIKE 'data.remote.%' AND CAST(db_dblink_1.label AS VARCHAR) LIKE 'remote_folder'</td>
+      <td>2.900000e-07</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.18</td>
+      <td>DECLARE</td>
+    </tr>
+  </tbody>
+</table>
