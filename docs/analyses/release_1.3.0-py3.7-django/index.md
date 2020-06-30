@@ -4,12 +4,12 @@
 
 Fact         | Value
 -------------|-----------------------------------------------------------
-Date         | 2020-06-30 13:33:04
+Date         | 2020-06-30 13:44:06
 Machine      | x86_64
-Kernel       | Darwin Kernel Version 19.5.0: Tue May 26 20:41:44 PDT 2020; root:xnu-6153.121.2~2/RELEASE_X86_64
-Processor    | Intel(R) Core(TM) i5-1038NG7 CPU @ 2.00GHz
-Cores        | 4
-Virtual CPUs | 8
+Kernel       | #32~18.04.1-Ubuntu SMP Mon Jun 22 15:27:23 UTC 2020
+Processor    | ['0', 'GenuineIntel', 'Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz', '1', 'GenuineIntel', 'Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz']
+Cores        | 2
+Virtual CPUs | 2
 
 ## Test Times
 

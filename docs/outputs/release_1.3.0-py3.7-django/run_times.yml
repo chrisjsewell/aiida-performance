@@ -1,0 +1,6 @@
+create_nodes: 16.12
+delete_nodes: 7.80
+workfunction: 58.72
+calcjob-add-local: 293.94
+workchain-multiadd-local: 195.04
+calcjob-add-slurm: 489.31
