@@ -30,6 +30,7 @@
   register: test_output
 
 - name: "Convert profile output to SVG: {{ TEST_NAME }}"
+  become: true  # this is required on github actions
   shell:
     cmd: >
       docker run --rm --name flamegraph

@@ -47,7 +47,7 @@
       changed_when: False
 
     - name: touch run_times.yml
-      become: true
+      become: true  # this is require on github actions
       file:
         path: "{{ OUTPUT_FOLDER }}/run_times.yml"
         state: touch
