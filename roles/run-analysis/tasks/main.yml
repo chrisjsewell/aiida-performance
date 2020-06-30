@@ -46,12 +46,6 @@
           'until [ -f /opt/.initialised ] 2> /dev/null; do echo -n .; sleep 1; done'
       changed_when: False
 
-    - name: ensure write permissions
-      become: true
-      file: 
-        path: "{{ OUTPUT_FOLDER }}"
-        mode: u=rw,g=rw,o=rw
-
     - name: touch run_times.yml
       become: true  # this is require on github actions
       file:
@@ -73,6 +67,7 @@
         loop_var: TEST_NAME
 
     - name: "Dump database final indices stats"
+      become: true
       command:
         cmd: >
           docker exec --user aiida aiida-core verdi run tests/db_stats.py --path "/home/aiida/outputs" --name "final" indices
@@ -88,6 +83,7 @@
         run_times: "{{ run_times['content'] | b64decode }}"
 
     - name: make documentation main page
+      become: true
       template:
         src: templates/front_page.j2.md
         dest: "{{ OUTPUT_FOLDER }}/index.md"
